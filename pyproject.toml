@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "roof-eval"
+version = "0.1.0"
+description = "Local evaluation pipeline for a rooftop installation object detector."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy==1.26.4",
+    "pandas==2.2.2",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest==8.2.0",
+]
+
+[project.scripts]
+roof-eval = "roof_eval.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
