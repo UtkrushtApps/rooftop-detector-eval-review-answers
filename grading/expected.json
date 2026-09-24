@@ -1,0 +1,22 @@
+{
+  "threshold": 0.5,
+  "per_class": {
+    "antenna_mount": {
+      "tp": 155,
+      "fp": 38
+    },
+    "rru": {
+      "tp": 80,
+      "fp": 16
+    },
+    "cable_tray": {
+      "tp": 40,
+      "fp": 8
+    },
+    "safety_rail_gap": {
+      "tp": 1,
+      "fp": 5
+    }
+  },
+  "macro_f1": 0.6846374831108587
+}

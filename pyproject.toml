@@ -7,15 +7,15 @@ name = "roof-eval"
 version = "0.1.0"
 description = "Local evaluation pipeline for a rooftop installation object detector."
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 dependencies = [
-    "numpy==1.26.4",
-    "pandas==2.2.2",
+    "numpy>=1.26,<3",
+    "pandas>=2.2,<3",
 ]
 
 [project.optional-dependencies]
 test = [
-    "pytest==8.2.0",
+    "pytest>=8",
 ]
 
 [project.scripts]

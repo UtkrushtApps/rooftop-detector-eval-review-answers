@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR" || exit 1
 
 echo "[run.sh] Installing dependencies..."
-python3 -m pip install -q -e ".[test]" || { echo "[run.sh] dependency install failed"; exit 1; }
+PIP_BREAK_SYSTEM_PACKAGES=1 python3 -m pip install -q -e ".[test]" || { echo "[run.sh] dependency install failed"; exit 1; }
 
 echo "[run.sh] Loading JSON fixtures..."
 python3 - <<'PY'

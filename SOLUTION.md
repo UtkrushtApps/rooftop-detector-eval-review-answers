@@ -1,8 +1,8 @@
 # Solution Steps
 
-1. Confirm the data format: COCO annotations and detection results use bboxes as [x, y, width, height], while IoU operates on corner coordinates.
+1. Boxes are COCO [x, y, width, height] in both files (see the info block of each JSON); geometry.to_corners already converts them correctly. Nothing to change, but a strong candidate verifies it by hand on a few photos.
 
-2. Fix bbox conversion in geometry.to_corners so every annotation and prediction is converted from COCO xywh into (x1, y1, x2, y2) before IoU matching.
+2. Count detections on photos that have no annotations. The starter iterates only over photos with ground truth, so every false positive on an empty rooftop is silently dropped and precision is inflated. Iterate over every photo that has annotations or predictions.
 
 3. Rewrite single-image matching to process predictions in descending confidence order and allow each ground-truth object to be matched at most once, class-by-class. Duplicate detections on the same object should become false positives after the first match.
 
@@ -20,3 +20,7 @@
 
 10. Replace the placeholder failure analysis with a concise explanation of the corrected evaluation artifacts, validation-based operating point, remaining real detector failures, and field-review risks.
 
+
+## Grading
+
+The hidden split lives in grading/hidden (100 photos, sites S-3xx, never shipped to candidates). Run `python grading/grade.py <candidate repo>`. Reference solution 5/5, untouched starter 0/5. Regenerate all data with `python tools/make_data.py --starter <starter repo> --answers .` then `python grading/grade.py . --write-expected`.
