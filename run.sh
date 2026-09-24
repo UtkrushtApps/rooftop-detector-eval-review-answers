@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -uo pipefail
 
-cd /root/task || { echo "[run.sh] cannot cd to /root/task"; exit 1; }
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$SCRIPT_DIR" || exit 1
 
 echo "[run.sh] Installing dependencies..."
 python3 -m pip install -q -e ".[test]" || { echo "[run.sh] dependency install failed"; exit 1; }
